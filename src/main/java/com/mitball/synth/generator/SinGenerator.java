@@ -1,4 +1,6 @@
-package com.mitball.synth;
+package com.mitball.synth.generator;
+
+import com.mitball.synth.AudioParams;
 
 public class SinGenerator extends ToneGenerator
 {
@@ -23,7 +25,6 @@ public class SinGenerator extends ToneGenerator
         step = (int) ((TABLE_SIZE * frequency * STEP_DIV) / AudioParams.getSampleRate());
     }
 
-    @Override
     public int tick()
     {
         return getSample(((counter++ * step)/STEP_DIV) % TABLE_SIZE);
@@ -52,7 +53,6 @@ public class SinGenerator extends ToneGenerator
         return val;
     }
     
-    @Override
     public void reset()
     {
         counter = 0;

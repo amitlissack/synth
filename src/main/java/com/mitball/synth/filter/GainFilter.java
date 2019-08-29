@@ -1,4 +1,7 @@
-package com.mitball.synth;
+package com.mitball.synth.filter;
+
+import com.mitball.synth.AudioParams;
+import com.mitball.synth.generator.SinGenerator;
 
 public class GainFilter implements Filter
 {
@@ -9,7 +12,6 @@ public class GainFilter implements Filter
         this.gain = gain;
     }
     
-    @Override
     public int tick(int in)
     {
         return (in * gain) >> AudioParams.RAW_MAX_BITS;

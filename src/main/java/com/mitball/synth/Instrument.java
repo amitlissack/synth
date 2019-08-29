@@ -1,5 +1,8 @@
 package com.mitball.synth;
 
+import com.mitball.synth.filter.Filter;
+import com.mitball.synth.generator.SampleGenerator;
+
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -52,7 +55,6 @@ public abstract class Instrument implements SampleGenerator
             {
                 if (voice.isDone())
                 {
-                    System.out.println(System.currentTimeMillis() + " Adding Note on - " + note);
                     voice.start(note, velocity);
                     noteToVoiceMap.put(note, voice);
                     break;
@@ -61,25 +63,15 @@ public abstract class Instrument implements SampleGenerator
         }
     }
     
-    /**
-     * 
-     * @param noteNumber
-     */
     public void sendNoteOff(int note)
     {
         Voice v = noteToVoiceMap.remove(note); 
         if (v != null)
         {
-            System.out.println(System.currentTimeMillis() + " Removing Note on - " + v.getNote());
             v.stop();
         }
     }
     
-    /**
-     * 
-     * @param controller
-     * @param value
-     */
     public void sendController(int controller, int value)
     {}
     
@@ -89,7 +81,6 @@ public abstract class Instrument implements SampleGenerator
      */
     abstract protected Voice createVoice();
 
-    @Override
     public int tick()
     {
         int value = 0;
@@ -109,7 +100,6 @@ public abstract class Instrument implements SampleGenerator
         return value;
     }
     
-    @Override
     public void fill(int[] buffer)
     {
         int length = buffer.length;

@@ -1,13 +1,11 @@
-package com.mitball.synth;
+package com.mitball.synth.generator;
+
+import com.mitball.synth.generator.SampleGenerator;
 
 public abstract class ToneGenerator implements SampleGenerator
 {
     protected double frequency = 0;
     
-    /**
-     * 
-     * @param frequency
-     */
     public ToneGenerator()
     {
     }
@@ -22,7 +20,6 @@ public abstract class ToneGenerator implements SampleGenerator
         this.frequency = frequency;
     }
     
-    @Override
     public void fill(int[] buffer)
     {
         int length = buffer.length;

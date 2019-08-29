@@ -1,4 +1,7 @@
-package com.mitball.synth;
+package com.mitball.synth.filter;
+
+import com.mitball.synth.*;
+import com.mitball.synth.generator.SinGenerator;
 
 public class DynamicsCompressor implements Filter
 {
@@ -29,14 +32,13 @@ public class DynamicsCompressor implements Filter
      */
     public static void main(String[] args)
     {
-        Instrument instrument = new Instrument() 
+        Instrument instrument = new Instrument()
         {
             @Override
             protected Voice createVoice()
             {
                 return new Voice(new SinGenerator(), new Envelope(50, 0, AudioParams.RAW_MAX, 250));
             }
-            @Override
             public void reset() {}
         };
 //        instrument.addFilter(new GainFilter(AudioParams.RAW_MAX / 3));
