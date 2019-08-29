@@ -1,4 +1,6 @@
-package com.mitball.synth;
+package com.mitball.synth.generator;
+
+import com.mitball.synth.AudioParams;
 
 public class RawSineGenerator extends ToneGenerator
 {
@@ -14,13 +16,11 @@ public class RawSineGenerator extends ToneGenerator
         a = (2 * Math.PI * frequency) / AudioParams.getSampleRate();
     }
     
-    @Override
     public int tick()
     {
         return (int) (32768.0 * Math.sin(a * counter++));
     }
 
-    @Override
     public void reset()
     {
        counter = 0;

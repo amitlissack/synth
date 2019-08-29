@@ -1,5 +1,8 @@
 package com.mitball.synth;
 
+import com.mitball.synth.filter.Envelope;
+import com.mitball.synth.generator.SinGenerator;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -49,14 +52,12 @@ public class Sequence implements Runnable
         }
     }
 
-    @Override
     public void run()
     {
         int index = 0;
         
         Collections.sort(events, new Comparator<Event>()
         {
-            @Override
             public int compare(Event arg0, Event arg1)
             {
                 return arg0.getTime() - arg1.getTime();
@@ -143,8 +144,7 @@ public class Sequence implements Runnable
         @Override
         public void fire()
         {
-            System.out.println(String.format("Note on %d %d", note, System.currentTimeMillis()));
-            instrument.sendNoteOn(note, velocity);            
+            instrument.sendNoteOn(note, velocity);
         }
     }
     
@@ -168,7 +168,6 @@ public class Sequence implements Runnable
         @Override
         public void fire()
         {
-            System.out.println(String.format("Note off %d %d", note, System.currentTimeMillis()));
             instrument.sendNoteOff(note);
         }
     }
@@ -182,7 +181,6 @@ public class Sequence implements Runnable
     {
         Instrument i = new Instrument()
         {
-            @Override
             public void reset()
             {
                 

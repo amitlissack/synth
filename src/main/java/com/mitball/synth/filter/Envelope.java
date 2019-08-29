@@ -1,4 +1,7 @@
-package com.mitball.synth;
+package com.mitball.synth.filter;
+
+import com.mitball.synth.AudioParams;
+import com.mitball.synth.generator.SinGenerator;
 
 public class Envelope implements Filter
 {
@@ -114,7 +117,6 @@ public class Envelope implements Filter
         }
         default: break;
         }
-//        System.out.println(String.format("%d, %d, %s", in, newLevel, state));
         lastLevel = newLevel;
         return (in * newLevel) >> AudioParams.RAW_MAX_BITS;
     }
@@ -130,7 +132,6 @@ public class Envelope implements Filter
         while(e.state != IDLE)
         {
             int r = e.tick(s.tick());
-            System.out.println(/*e.state + ", " +*/ r);
             if (e.state == SUSTAIN)
             {
                 count++;

@@ -1,4 +1,7 @@
-package com.mitball.synth;
+package com.mitball.synth.generator;
+
+import com.mitball.synth.AudioParams;
+import com.mitball.synth.generator.ToneGenerator;
 
 public class WaveTableGenerator extends ToneGenerator
 {
@@ -42,15 +45,9 @@ public class WaveTableGenerator extends ToneGenerator
         //Interpolation offset. Difference between present and next * remainder.
         int interpolation = ((valueNext - value) * remainder) >> STEP_DVIBITS;
 
-//        System.out.println(String.format("%d, %d, %d, %d, %d, %d", rawIndex, remainder, value, valueNext, interpolation, value+interpolation));
-        
         return value+interpolation;
-
-        //No interpolation
-        //        return table[(((counter++ * step)/STEP_DIV) % table.length)];
     }
     
-    @Override
     public void reset()
     {
         counter = 0;

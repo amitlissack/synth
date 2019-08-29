@@ -1,5 +1,9 @@
 package com.mitball.synth;
 
+import com.mitball.synth.filter.Envelope;
+import com.mitball.synth.generator.SampleGenerator;
+import com.mitball.synth.generator.ToneGenerator;
+
 public class Voice implements SampleGenerator {
 
     private ToneGenerator toneGen;
@@ -38,8 +42,7 @@ public class Voice implements SampleGenerator {
 	    return envelope.isDone();
 	}
 	
-	@Override
-	public int tick() 
+	public int tick()
 	{
 	    if (!envelope.isDone())
 	    {
@@ -48,7 +51,6 @@ public class Voice implements SampleGenerator {
 		return 0;
 	}
 	
-	@Override
     public void fill(int[] buffer)
 	{
 	    if (envelope.isDone())
@@ -61,7 +63,6 @@ public class Voice implements SampleGenerator {
 	    }
     }   
 	
-    @Override
     public void reset()
     {
         toneGen.reset();

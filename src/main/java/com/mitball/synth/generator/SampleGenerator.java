@@ -1,4 +1,4 @@
-package com.mitball.synth;
+package com.mitball.synth.generator;
 
 public interface SampleGenerator
 {
