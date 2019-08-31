@@ -8,6 +8,25 @@
     <artifactId>synth</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
+    <description>A wavetable synthesizer in plain java. Supply buffer. We'll fill it with sound.</description>
 
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/amitlissack/synth</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>Amit Lissack</name>
+            <email>amit.lissack@gmail.com</email>
+        </developer>
+    </developers>
 
 </project>

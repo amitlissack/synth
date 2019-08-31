@@ -1,55 +1,49 @@
 package com.mitball.synth.generator;
 
 import com.mitball.synth.AudioParams;
-import com.mitball.synth.generator.ToneGenerator;
 
-public class WaveTableGenerator extends ToneGenerator
-{
+public class WaveTableGenerator extends ToneGenerator {
     private int counter = 0;
     private int step = 0;
 
     private static final int STEP_DVIBITS = 8;
-    private static final int STEP_DIV = 1 << STEP_DVIBITS; 
-    
-    private int [] table;
-    
-    public WaveTableGenerator(int [] table)
-    {
+    private static final int STEP_DIV = 1 << STEP_DVIBITS;
+
+    private int[] table;
+
+    public WaveTableGenerator(int[] table) {
         this.table = table;
     }
 
     @Override
-    public void setFrequency(double frequency)
-    {
+    public void setFrequency(double frequency) {
         super.setFrequency(frequency);
-        
+
         step = (int) ((table.length * frequency * STEP_DIV) / AudioParams.getSampleRate());
     }
-    
-    public int tick()
-    {
+
+    public int tick() {
         int preDivStep = (counter++ * step);
         int rawIndex = preDivStep >> STEP_DVIBITS;
         int remainder = preDivStep % STEP_DIV;
-        
+
         //Index of present note in wave table
         int index = rawIndex % table.length;
         //Index of next entry in wave table
-        int indexNext = (rawIndex  + 1) % table.length;
-        
+        int indexNext = (rawIndex + 1) % table.length;
+
         //Value at index
         int value = table[index];
         //Value at next entry in wave table
         int valueNext = table[indexNext];
-        
+
         //Interpolation offset. Difference between present and next * remainder.
         int interpolation = ((valueNext - value) * remainder) >> STEP_DVIBITS;
 
-        return value+interpolation;
+        return value + interpolation;
     }
-    
-    public void reset()
-    {
+
+    public void reset() {
         counter = 0;
     }
 }
