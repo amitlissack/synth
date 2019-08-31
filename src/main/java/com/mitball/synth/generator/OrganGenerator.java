@@ -1,13 +1,11 @@
 package com.mitball.synth.generator;
 
-public class OrganGenerator extends WaveTableGenerator
-{
-    public OrganGenerator()
-    {
+public class OrganGenerator extends WaveTableGenerator {
+    public OrganGenerator() {
         super(TABLE);
     }
-    
-    private static final int[] TABLE = new int[] { 0, 1537, 3070, 4596, 6110,
+
+    private static final int[] TABLE = new int[]{0, 1537, 3070, 4596, 6110,
             7609, 9089, 10547, 11979, 13381, 14751, 16086, 17381, 18636, 19846,
             21010, 22126, 23190, 24203, 25161, 26064, 26911, 27700, 28431,
             29104, 29718, 30273, 30770, 31210, 31592, 31918, 32188, 32405,
@@ -65,17 +63,5 @@ public class OrganGenerator extends WaveTableGenerator
             -32406, -32189, -31919, -31593, -31211, -30771, -30274, -29719,
             -29105, -28432, -27701, -26912, -26065, -25162, -24204, -23191,
             -22127, -21011, -19847, -18637, -17382, -16087, -14752, -13382,
-            -11980, -10548, -9090, -7610, -6111, -4597, -3071, -1538 };
-    
-    public static void main(String [] args)
-    {
-        OrganGenerator g = new OrganGenerator();
-        g.setFrequency(220);
-        
-        for (int i = 0; i < 1000; i++)
-        {
-            g.tick();
-        }
-        
-    }
+            -11980, -10548, -9090, -7610, -6111, -4597, -3071, -1538};
 }

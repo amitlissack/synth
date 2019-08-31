@@ -1,10 +1,9 @@
 package com.mitball.synth.generator;
 
-public interface SampleGenerator
-{
-    public int tick();
-    
-    public void fill(int[] buffer);
+public interface SampleGenerator {
+    int tick();
 
-    public void reset();
+    void fill(int[] buffer);
+
+    void reset();
 }

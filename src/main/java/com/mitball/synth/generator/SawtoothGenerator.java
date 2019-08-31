@@ -1,24 +1,20 @@
 package com.mitball.synth.generator;
 
-public class SawtoothGenerator extends WaveTableGenerator
-{
-    public SawtoothGenerator()
-    {
+public class SawtoothGenerator extends WaveTableGenerator {
+    public SawtoothGenerator() {
         super(SAW_TABLE);
     }
 
-    public static void main(String[] args) 
-    {
+    public static void main(String[] args) {
         SawtoothGenerator g = new SawtoothGenerator();
         g.setFrequency(440);
-        
-        for (int i = 0; i < 600; i++)
-        {
+
+        for (int i = 0; i < 600; i++) {
             System.out.println(g.tick());
         }
     }
-    
-    private static final int[] SAW_TABLE = new int[] { 0, 128, 256, 385, 513,
+
+    private static final int[] SAW_TABLE = new int[]{0, 128, 256, 385, 513,
             642, 770, 899, 1027, 1156, 1284, 1413, 1541, 1670, 1798, 1927,
             2055, 2184, 2312, 2441, 2569, 2698, 2826, 2955, 3083, 3212, 3340,
             3469, 3597, 3726, 3854, 3983, 4111, 4240, 4368, 4497, 4625, 4754,
@@ -76,5 +72,5 @@ public class SawtoothGenerator extends WaveTableGenerator
             -3855, -3727, -3598, -3470, -3341, -3213, -3084, -2956, -2827,
             -2699, -2570, -2442, -2313, -2185, -2056, -1928, -1799, -1671,
             -1542, -1414, -1285, -1157, -1028, -900, -771, -643, -514, -386,
-            -257, -129 };
+            -257, -129};
 }

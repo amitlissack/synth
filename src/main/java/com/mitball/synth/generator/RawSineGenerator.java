@@ -2,27 +2,23 @@ package com.mitball.synth.generator;
 
 import com.mitball.synth.AudioParams;
 
-public class RawSineGenerator extends ToneGenerator
-{
+public class RawSineGenerator extends ToneGenerator {
     int counter = 0;
-    
+
     double a = 0;
-    
+
     @Override
-    public void setFrequency(double frequency)
-    {
+    public void setFrequency(double frequency) {
         super.setFrequency(frequency);
-        
+
         a = (2 * Math.PI * frequency) / AudioParams.getSampleRate();
     }
-    
-    public int tick()
-    {
+
+    public int tick() {
         return (int) (32768.0 * Math.sin(a * counter++));
     }
 
-    public void reset()
-    {
-       counter = 0;
+    public void reset() {
+        counter = 0;
     }
 }
